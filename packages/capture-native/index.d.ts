@@ -63,6 +63,8 @@ export declare function keyLabel(keycode: number): string | null
 
 export declare function releaseWebContent(): void
 
+export declare function requestScreenAccess(): boolean
+
 export declare function resolveKey(keycode: number, shift: boolean, ctrl: boolean, alt: boolean): string | null
 
 export declare function startInputHook(callback: (event: HookEvent) => void): void

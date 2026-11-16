@@ -1,6 +1,7 @@
 import { readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { app, desktopCapturer, shell, systemPreferences } from 'electron';
+import { loadNative } from './capture/native';
 
 export interface CapturePermissions {
   accessibility: boolean;
@@ -53,6 +54,7 @@ function prompted(): PermissionKind[] {
 
 export async function requestPermission(kind: PermissionKind): Promise<void> {
   if (process.platform !== 'darwin') return;
+  if (kind === 'screen') (await loadNative())?.requestScreenAccess();
   const asked = prompted();
   if (asked.includes(kind)) {
     await shell.openExternal(SETTINGS_PANE[kind]);

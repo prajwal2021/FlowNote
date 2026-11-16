@@ -112,6 +112,7 @@ extern "C" {
   fn CGWindowListCopyWindowInfo(option: u32, relative_to: u32) -> CFArrayRef;
   fn CGRectMakeWithDictionaryRepresentation(dictionary: CFDictionaryRef, rect: *mut CGRect) -> bool;
   fn CGEventSourceFlagsState(state: i32) -> u64;
+  fn CGRequestScreenCaptureAccess() -> bool;
   static kCGWindowLayer: CFStringRef;
   static kCGWindowBounds: CFStringRef;
   static kCGWindowOwnerPID: CFStringRef;
@@ -405,6 +406,10 @@ fn open_web_content(element: AXUIElementRef) -> bool {
     return true;
   }
   opened
+}
+
+pub fn request_screen_access() -> bool {
+  unsafe { CGRequestScreenCaptureAccess() }
 }
 
 pub fn release_web_content() {

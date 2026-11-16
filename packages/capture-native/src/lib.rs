@@ -182,6 +182,14 @@ pub fn release_web_content() {
 }
 
 #[napi]
+pub fn request_screen_access() -> bool {
+  #[cfg(target_os = "macos")]
+  return platform::request_screen_access();
+  #[cfg(not(target_os = "macos"))]
+  true
+}
+
+#[napi]
 pub fn is_supported() -> bool {
   cfg!(any(windows, target_os = "macos"))
 }
