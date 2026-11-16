@@ -43,12 +43,23 @@ if (tooLong.length > 0) {
 }
 
 const defined = new Set();
+const duplicates = [];
 let section = null;
 for (const line of readFileSync(join(LOCALES, 'en.yml'), 'utf8').split('\n')) {
   const top = line.match(/^([A-Za-z][\w]*):\s*$/);
   if (top) section = top[1];
   const entry = line.match(/^ {2}([A-Za-z][\w]*):/);
-  if (section && entry) defined.add(`${section}.${entry[1]}`);
+  if (section && entry) {
+    const key = `${section}.${entry[1]}`;
+    if (defined.has(key)) duplicates.push(key);
+    defined.add(key);
+  }
+}
+
+if (duplicates.length > 0) {
+  console.error(duplicates.join('\n'));
+  console.error(`\n${duplicates.length} translation key(s) are defined twice in packages/locales/en.yml`);
+  process.exit(1);
 }
 
 const missing = ROOTS.flatMap(walk).flatMap((file) =>
