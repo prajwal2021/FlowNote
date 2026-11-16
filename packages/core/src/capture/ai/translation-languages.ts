@@ -1,0 +1,18 @@
+export const TRANSLATION_LANGUAGES = [
+  { code: 'en', name: 'English', native: 'English' },
+  { code: 'es', name: 'Spanish', native: 'Español' },
+  { code: 'fr', name: 'French', native: 'Français' },
+  { code: 'de', name: 'German', native: 'Deutsch' },
+  { code: 'it', name: 'Italian', native: 'Italiano' },
+  { code: 'pt', name: 'Portuguese', native: 'Português' },
+  { code: 'nl', name: 'Dutch', native: 'Nederlands' },
+  { code: 'pl', name: 'Polish', native: 'Polski' },
+  { code: 'tr', name: 'Turkish', native: 'Türkçe' },
+  { code: 'ru', name: 'Russian', native: 'Русский' },
+  { code: 'ar', name: 'Arabic', native: 'العربية' },
+  { code: 'hi', name: 'Hindi', native: 'हिन्दी' },
+  { code: 'ja', name: 'Japanese', native: '日本語' },
+  { code: 'ko', name: 'Korean', native: '한국어' },
+  { code: 'zh-CN', name: 'Simplified Chinese', native: '简体中文' },
+  { code: 'zh-TW', name: 'Traditional Chinese', native: '繁體中文' },
+] as const;

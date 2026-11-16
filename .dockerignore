@@ -1,0 +1,12 @@
+**/node_modules
+**/.next
+**/.output
+**/.wxt
+**/dist
+**/out
+**/target
+**/*.node
+**/.env
+**/.env.local
+.claude
+coverage

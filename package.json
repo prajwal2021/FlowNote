@@ -1,0 +1,142 @@
+{
+  "name": "flownote-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "dev": "pnpm --filter flownote dev",
+    "dev:firefox": "pnpm --filter flownote dev:firefox",
+    "build": "pnpm --filter flownote build",
+    "build:firefox": "pnpm --filter flownote build:firefox",
+    "zip": "pnpm --filter flownote zip",
+    "zip:firefox": "pnpm --filter flownote zip:firefox",
+    "zip:all": "pnpm --filter flownote zip:all",
+    "size": "pnpm --filter flownote size",
+    "dev:desktop": "pnpm --filter @flownote/desktop dev",
+    "build:desktop": "pnpm --filter @flownote/desktop build",
+    "pack:desktop": "pnpm --filter @flownote/desktop run pack",
+    "typecheck": "pnpm --filter flownote typecheck && pnpm --filter @flownote/desktop typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:cov": "vitest run --coverage",
+    "lint": "biome check . && node scripts/check-exports.mjs && node scripts/check-locale-keys.mjs && node scripts/check-capture-states.mjs && jscpd && knip --no-progress",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-istanbul": "^5.0.3",
+    "fake-indexeddb": "^6.2.5",
+    "happy-dom": "^20.14.5",
+    "jscpd": "^4.3.0",
+    "jsdom": "^30.1.2",
+    "knip": "^6.39.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.3",
+    "wxt": "^0.21.4"
+  },
+  "knip": {
+    "ignoreUnresolved": [
+      "#imports"
+    ],
+    "ignoreDependencies": [
+      "@flownote/locales"
+    ],
+    "workspaces": {
+      ".": {
+        "entry": [
+          "scripts/*.mjs"
+        ],
+        "project": [
+          "scripts/**"
+        ]
+      },
+      "apps/extension": {
+        "entry": [
+          "src/entrypoints/*.ts",
+          "src/entrypoints/*/index.{ts,tsx}"
+        ],
+        "project": [
+          "src/**/*.{ts,tsx}"
+        ]
+      },
+      "apps/server": {
+        "entry": [
+          "src/app/**/*.{ts,tsx}",
+          "scripts/*.{ts,mjs}"
+        ],
+        "project": [
+          "src/**/*.{ts,tsx}",
+          "scripts/**"
+        ],
+        "ignoreDependencies": [
+          "tailwindcss"
+        ]
+      },
+      "apps/desktop": {
+        "entry": [
+          "src/preload/*.ts",
+          "src/renderer/*.html",
+          "scripts/*.{ts,mjs,cjs}"
+        ],
+        "project": [
+          "src/**/*.{ts,tsx}",
+          "scripts/**"
+        ],
+        "ignoreDependencies": [
+          "tailwindcss"
+        ]
+      },
+      "packages/core": {
+        "includeEntryExports": true,
+        "project": [
+          "src/**/*.ts"
+        ],
+        "ignore": [
+          "src/export/empty.ts"
+        ]
+      },
+      "packages/ui": {
+        "includeEntryExports": true,
+        "project": [
+          "src/**/*.{ts,tsx}"
+        ],
+        "ignore": [
+          "src/components/ui/**"
+        ]
+      },
+      "packages/capture-native": {
+        "ignore": [
+          "index.js"
+        ]
+      }
+    }
+  },
+  "jscpd": {
+    "path": [
+      "apps/extension/src",
+      "apps/desktop/src",
+      "packages/core/src",
+      "packages/ui/src"
+    ],
+    "format": [
+      "typescript",
+      "tsx"
+    ],
+    "minLines": 12,
+    "minTokens": 80,
+    "threshold": 0.5,
+    "ignore": [
+      "**/__tests__/**",
+      "**/*.test.ts",
+      "**/*.test.tsx",
+      "**/components/ui/**"
+    ],
+    "reporters": [
+      "console"
+    ],
+    "silent": true
+  }
+}

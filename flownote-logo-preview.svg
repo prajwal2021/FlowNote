@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300">
+  <rect width="880" height="300" fill="#f8fafc"/>
+  <defs><g id="m"><path d="M28 20H80M28 45H60M28 70H72M63 61L72 70L63 79" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></g></defs>
+  <text x="48" y="48" font-family="Inter,Helvetica,Arial" font-size="15" fill="#64748b" letter-spacing="1.5">FLOWNOTE — APP MARK</text>
+  <rect x="48" y="72" width="150" height="150" rx="42" fill="#CC0000"/>
+  <svg x="69" y="93" width="108" height="108" viewBox="0 0 100 100"><use href="#m" stroke="#fff"/></svg>
+  <rect x="228" y="136" width="64" height="64" rx="18" fill="#CC0000"/>
+  <svg x="239" y="147" width="42" height="42" viewBox="0 0 100 100"><use href="#m" stroke="#fff"/></svg>
+  <rect x="318" y="152" width="32" height="32" rx="9" fill="#CC0000"/>
+  <svg x="323" y="157" width="22" height="22" viewBox="0 0 100 100"><use href="#m" stroke="#fff"/></svg>
+  <rect x="372" y="160" width="16" height="16" rx="5" fill="#CC0000"/>
+  <svg x="374" y="162" width="12" height="12" viewBox="0 0 100 100"><use href="#m" stroke="#fff"/></svg>
+  <text x="228" y="232" font-family="Inter,Helvetica,Arial" font-size="12" fill="#94a3b8">64   32   16 px</text>
+  <svg x="424" y="140" width="56" height="56" viewBox="0 0 100 100"><use href="#m" stroke="#CC0000"/></svg>
+  <text x="498" y="184" font-family="Inter,Helvetica,Arial" font-size="44" font-weight="600" fill="#0f172a">FlowNote</text>
+  <rect x="690" y="72" width="150" height="150" rx="42" fill="#0f172a"/>
+  <svg x="711" y="93" width="108" height="108" viewBox="0 0 100 100"><use href="#m" stroke="#fff"/></svg>
+</svg>

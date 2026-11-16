@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "electron-vite/node"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "paths": {
+      "@flownote/core/*": [
+        "../../packages/core/src/*"
+      ],
+      "@/core/*": [
+        "../../packages/core/src/*"
+      ],
+      "@flownote/ui": [
+        "../../packages/ui/src/index.ts"
+      ],
+      "@flownote/ui/*": [
+        "../../packages/ui/src/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": [
+    "src/**/*",
+    "scripts/**/*",
+    "electron.vite.config.ts",
+    "../../packages/*/src/**/*.d.ts"
+  ]
+}

@@ -1,0 +1,904 @@
+meta:
+  locale: en
+
+app:
+  name: FlowNote
+  store_title: "FlowNote: Step-by-Step Guides & Tutorials"
+  description: "Record any browser workflow as a step-by-step guide. Edit, voice-narrate, export to video, PDF or DOCX."
+
+common:
+  loading: Loading…
+  cancel: Cancel
+  save: Save
+  delete: Delete
+  back: Back
+  continue: Continue
+  skip: Skip
+  export: Export
+  close: Close
+  undo: Undo
+  star: Star
+  unstar: Unstar
+  restore: Restore
+  updated: "Updated to v$1"
+
+sidepanel:
+  connected: Connected
+  connecting: Connecting…
+  heroTitle: What would you like to capture?
+  heroSubtitle: Record any workflow automatically
+  searchPlaceholder: Search guides…
+  recentLabel: Recent
+  notRecordable: Open a website to start capturing
+
+library:
+  noGuidesTitle: No guides yet
+  noGuidesSub: Start a capture to create your first guide
+  noStarredTitle: No starred guides
+  noStarredSub: Star a guide to find it quickly
+  trashEmptyTitle: Trash is empty
+  trashEmptySub: Squeaky clean!
+  noMatchingGuides: No matching guides
+  moveToTrash: Move to trash
+  deletePermanently: Delete permanently
+  openInFullView: Open in full view
+  openDashboard: "Open dashboard"
+  openDashboardHint: "Browse, import and export guides there"
+  duplicate: Duplicate
+  copyOfTitle: "Copy of $1"
+  duplicateFailed: Couldn't duplicate this guide
+  collapseSidebar: Collapse sidebar
+  expandSidebar: Expand sidebar
+  allGuides: "All guides"
+  starred: Starred
+  trash: Trash
+  searchPlaceholder: Search guides…
+
+guideme:
+  live: Live
+  roadblock: "Can't find this step on the page. Do it yourself to continue."
+  manualStep: "Edited steps can't be detected. Click Next when you've done it."
+  stepOf: "Step $1 of $2"
+  noDescription: No description
+  prev: Prev
+  next: Next
+  finish: "Finish"
+  exitTitle: Heading out?
+  exitMessage: "The walkthrough and its page overlay will close."
+  stay: Stay
+  exit: Exit
+  guideNotFound: Guide not found
+
+guidemeCompletion:
+  title: "All done, champ!"
+  stepsCompleted: "$1 step completed."
+  stepsCompletedPlural: "All $1 steps completed."
+  allDone: "All done"
+  runAgain: "Run again"
+
+recording:
+  capturePaused: Capture paused
+  capturePausedBlur: Blur mode · capture paused
+  pauseCapture: Pause capture
+  resumeCapture: Resume capture
+  recording: "Recording \xB7 $1 step"
+  recordingPlural: "Recording \xB7 $1 steps"
+  readyTitle: "Ready to capture"
+  readySub: Click on the page to start
+  finishRecording: "Finish recording"
+  finish: Finish
+  smartBlur: "Smart blur"
+  discard: Discard
+  deleteStep: Delete step
+  justNow: Just now
+  secondsAgo: "$1s ago"
+  minutesAgo: "$1m ago"
+
+settings:
+  cardKeyboard: "Typing and keys"
+  cardKeyboardHint: "What your keyboard adds to a guide."
+  shortcutsHint: "Work on any page you browse."
+  shortcutsChange: "Change in browser"
+  shortcutRecordHint: "Starts on the tab you are looking at."
+  shortcutPauseHint: "While recording."
+  shortcutCaptureHint: "Saves the screen as a step without clicking, for open menus."
+  shortcutNotSet: "Not set"
+  shortcutsChangeNote: "Your browser keeps shortcuts on its own page."
+  recordKeys: "Record shortcuts and named keys"
+  recordKeysHint: "Ctrl+S, Enter and the like become steps."
+  recordTyping: "Record what you type"
+  recordTypingHint: "Everything you type into one field becomes one step."
+  microphoneAccess: "Microphone access"
+  microphoneAccessAsk: "Your browser asks once before FlowNote can hear you."
+  microphoneAccessAllow: "Allow"
+  title: Settings
+  aiDescriptions: "Step descriptions"
+  aiDescriptionsHint: "FlowNote writes each step's text and names your guide with your AI provider."
+  aiUseFor: "Use AI for"
+  aiForSteps: "Step descriptions"
+  aiForStepsHint: "The text under each screenshot."
+  aiForGuide: "Guide title and summary"
+  aiForGuideHint: "Written when you finish recording."
+  aiUnusedNote: "Steps keep their basic titles and the guide is named after the site or app. Narration and voice-over still use your key."
+  provider: Provider
+  model: Model
+  modelCustom: Custom model
+  baseUrl: Base URL
+  ownServerHintOpenai: "Works with Ollama, LM Studio, vLLM or any OpenAI-compatible server."
+  ownServerHintAnthropic: "Works with a LiteLLM proxy or any Anthropic-compatible server."
+  apiKey: "API key"
+  showKey: Show key
+  hideKey: Hide key
+  clearKey: Clear key
+  aiLanguage: "Description language"
+  apiKeys: "API keys"
+  aiSection: "AI"
+  ownServer: "Your own server"
+  optional: "Optional"
+  serverSpeaks: "Compatible with"
+  serverHeaders: "Headers"
+  headerName: "Header name"
+  headerValue: "Value"
+  addHeader: "Add header"
+  removeHeader: "Remove header"
+  protocolOpenai: "OpenAI"
+  protocolAnthropic: "Anthropic"
+  noServer: "No server address yet."
+  noKeyFor: "No $1 key yet."
+  addOneInKeys: "Add one in API keys."
+  addKey: "Add key"
+  noKey: "No key"
+  voiceover: "Video voice-over"
+  voiceoverHint: "FlowNote speaks each step's text over the exported video."
+  voice: "Voice"
+  voiceNarrationHint: "Talk through the workflow and FlowNote writes each step from what you said."
+  voiceNarration: "Voice narration"
+  aiNoKey: "Without an API key, steps get basic rule-based descriptions."
+  microphone: Microphone
+  microphoneDefault: System default
+  microphoneNeedsAccess: Allow microphone access to see your device names.
+  microphoneGrantAccess: Allow microphone access
+  microphoneNone: "No microphone found. Plug one in to see it here."
+  microphoneUnavailable: Unavailable microphone
+  microphoneMissing: "Your chosen microphone isn't connected. Using the system default."
+  microphoneTest: Test microphone
+  microphoneStatusAllowed: Allowed
+  microphoneStatusBlocked: Blocked
+  microphoneStatusPending: Not allowed yet
+  microphoneBlocked: "Microphone blocked. Click the icon left of the address bar and set Microphone to Allow."
+  microphoneUnblockHow: How do I unblock it?
+  microphoneTestStop: Stop test
+  microphoneTestFailed: "Couldn't open that microphone. Try another one."
+  targetColor: "Click highlight"
+  brandColor: "Brand color"
+  targetColorHint: "The outline drawn around what you clicked."
+  brandColorHint: "Accents in exported guides."
+  branding: "Export branding"
+  logoAndFooter: "Logo and footer"
+  logoAndFooterHint: "Shown on every guide you export."
+  brandLogo: "Logo"
+  uploadLogo: "Upload logo"
+  replaceLogo: "Replace"
+  removeLogo: "Remove logo"
+  footerLine: "Footer line"
+  footerLinePlaceholder: "e.g. Confidential · Internal use only"
+  footerPresetConfidential: "Confidential · Internal use only"
+  footerPresetNoDistribute: "Do not distribute"
+  attribution: 'Show "Made with FlowNote"'
+  saveSettings: "Save settings"
+  saved: Saved
+  validatingKey: "Checking key\u2026"
+  keyValid: API key verified.
+  keyChecking: "Checking…"
+  keyVerified: "Verified"
+  keyRejected: "Rejected"
+  keyOffline: "Unreachable"
+  keyCheckModel: "Check model"
+  keyInvalid: "The provider rejected this key. Check it and try again."
+  keyModelRequired: Choose a model before checking this key.
+  keyModelInvalid: The selected model isn't available from this provider.
+  checkKey: Check key
+  keyCannotSpend: "This key has no credits. Only free models will work."
+  keyUnreachable: "Couldn't reach the provider. Check your connection."
+  modelsFound: "$1 models available"
+  smartBlur: "Smart blur"
+  version: "Version $1"
+  reportBug: "Report a bug"
+  aboutSection: "About"
+  appearance: "Appearance"
+  appearanceHint: "Light, dark, or the same as your system."
+  themeSystem: "System"
+  themeLight: "Light"
+  themeDark: "Dark"
+
+blurPresets:
+  email: Email
+  phoneNumbers: "Phone numbers"
+  ssn: SSN
+  creditCard: "Credit card"
+  ipAddress: "IP address"
+  macAddress: "MAC address"
+
+desktop:
+  collapse: "Collapse"
+  expand: "Expand"
+  starting: "Starting…"
+  capturingStep: "Capturing step $1"
+  tipArmed: "Each click is saved as a step."
+  tipPaused: "Nothing is recorded while paused."
+  tipWaiting: "Your first click will show up here."
+  tipLabel: "Tip:"
+  hintStartStop: "you can press $1 to start and stop."
+  hintCapture: "you can press $1 to capture without clicking."
+  micAccessAsk: "macOS asks once before FlowNote can hear you."
+  micAccessRefused: "Refused. Turn on FlowNote in Privacy & Security."
+  armed: Ready
+  screenshotDelay: Screenshot delay
+  keepClicksBeyondArea: Capture clicks outside the area
+  keepClicksBeyondAreaHint: "In Area mode, clicks outside the area still become steps, framed by the area."
+  guideInApp: "Guide in $1"
+  capturingSection: Capturing
+  milliseconds: ms
+  captureMode: What to capture
+  modeWindow: Window
+  modeScreen: Screen
+  modeArea: Area
+  drawArea: "Drag to draw the capture area"
+  startSheetTitle: Start a capture
+  permissionsTitle: "Allow FlowNote to record"
+  permissionsIntro: "FlowNote needs two permissions before it can record."
+  permissionAccessibility: "Accessibility"
+  permissionAccessibilityHint: "Lets FlowNote see what you click and type."
+  permissionScreen: "Screen Recording"
+  permissionScreenHint: "Lets FlowNote take the screenshot for each step."
+  permissionScreenRestart: "Restart FlowNote to finish turning this on."
+  permissionRestart: "Restart FlowNote"
+  moreStepsAfter: "New steps are inserted after step $1."
+  moreStepsFirst: "New steps are inserted before step 1."
+  startButton: Start
+  shortcutsSection: "Shortcuts"
+  generalSection: "General"
+  cardStartup: "Startup"
+  startAtLogin: "Start at login"
+  startAtLoginHint: "FlowNote opens in the tray, without a window."
+  startAtLoginHintMac: "FlowNote opens when you log in."
+  version: "Version $1"
+  lastChecked: "Last checked $1"
+  checking: "Checking…"
+  downloading: "Downloading $1%"
+  versionAvailable: "Version $1 available"
+  versionDownloaded: "Version $1 downloaded"
+  tryAgain: "Try again"
+  restart: "Restart"
+  trayQuit: "Quit FlowNote"
+  trayRecording: "FlowNote is recording. Click to finish."
+  cannotRecord: "FlowNote cannot record"
+  needsX11: "Recording other apps needs an X11 session. Log out, pick a session on Xorg or X11 at the login screen, and start FlowNote again. To record in the browser, use the FlowNote extension."
+  later: "Later"
+  upToDate: "You're up to date"
+  cardScreenshots: "Screenshots"
+  cardGlobalKeys: "Global keys"
+  cardGlobalKeysHint: "Taken from every application while FlowNote is running."
+  zoomLevel: "Zoom toward the click"
+  zoomLevelHint: "New recordings start here. Automatic keeps every step the same size."
+  zoomAuto: "Automatic"
+  zoomGuide: "Zoom"
+  typingDebounce: "Close a typing step after"
+  typingDebounceHint: "A pause this long ends the typing step."
+  cardScreenshotsHint: "What each step's screenshot shows."
+  captureModeHint: "Window follows the app you click."
+  screenshotDelayHint: "Wait before taking the screenshot, for menus that animate."
+  seconds: "s"
+  shortcutRecord: "Start or finish a recording"
+  shortcutPause: "Pause or resume"
+  shortcutCapture: "Capture a step now"
+  shortcutPress: "Press keys…"
+  shortcutClear: "Clear"
+
+guide:
+  screenshotView: "Screenshot view"
+  screenshotStyle_full: "Full"
+  screenshotStyle_zoomed: "Zoomed"
+  screenshotStyle_both: "Both"
+  guideMe: "Guide Me"
+  untitled: "Untitled guide"
+  writingTitle: Writing a title from your captured steps...
+  writingDescription: "Writing a description\u2026"
+  notFound: "Guide not found"
+  stepCount: "$1 step"
+  stepCountPlural: "$1 steps"
+  pageOf: "$1 / $2"
+  onDomain: "Guide on $1"
+  newGuide: "New guide"
+
+sort:
+  recentFirst: Recent first
+  oldestFirst: Oldest first
+  alphaAZ: "A–Z"
+  mostSteps: Most steps
+  gridView: Grid view
+  listView: List view
+
+search:
+  recent: "Recent"
+  results: "$1 guides"
+  resultsOne: "1 guide"
+  noMatch: "No guides match “$1”"
+  noMatchHint: "Try a word from the guide's title."
+  noGuidesYet: No guides yet
+
+confirmDelete:
+  title: "Delete guide?"
+  message: This will permanently delete this guide. This cannot be undone.
+  confirm: Delete permanently
+
+editor:
+  backToLibrary: Back to library
+  openInDashboard: Open
+  openInDashboardHint: Open in the dashboard to edit or export
+  guideMe: "Guide Me"
+  guideMeUnavailable: No replayable steps in this guide
+  deleteThisStep: "Delete this step?"
+  selectStep: Select step
+  selectedCount: "$1 selected"
+  deleteSelectedStep: "Delete $1 selected step?"
+  deleteSelectedSteps: "Delete $1 selected steps?"
+  copyTo: Copy to
+  deselect: Deselect
+  copyStepTo: "Copy 1 step to…"
+  copyStepsTo: "Copy $1 steps to…"
+  copyStepsHint: "Screenshots, blur and edits come along. This guide stays as it is."
+  searchGuidesToCopyTo: Search guides by title
+  allGuides: All guides
+  sameSite: Same site
+  sameApp: Same app
+  newGuide: New guide
+  noGuidesToCopyTo: No guides match
+  copyStep: Copy 1 step
+  copySteps: "Copy $1 steps"
+  copyStepsFailed: Couldn't copy these steps. Try again.
+  stepCopied: "1 step copied from “$2”"
+  stepsCopied: "$1 steps copied from “$2”"
+  newStep: New
+  copyScreenshot: Copy screenshot
+  noScreenshot: No screenshot
+  edit: Edit
+  done: Done
+  versionHistory: Version history
+  moreActions: More actions
+  generateDescription: Generate description
+  regenerateDescription: Regenerate description
+  generatingDescription: "Generating\u2026"
+  descriptionPlaceholder: Add a description
+  descriptionErrorNoApiKey: "Add an AI API key in Settings to generate descriptions."
+  descriptionErrorNoSteps: "This guide has no described steps to summarize."
+  descriptionErrorFailed: Couldn't generate a description. Try again.
+  descriptionErrorSaveFailed: "Couldn't save the new description. Try again."
+  writingStepDescription: "Writing description\u2026"
+  transcribingStepDescription: "Transcribing what you said…"
+  rewriteAskAi: Ask AI
+  rewritePlaceholder: "Tell AI how to edit this text\u2026"
+  rewriteEnter: Enter
+  rewriteShorter: Shorter
+  rewriteDetail: More detail
+  rewriteGrammar: Fix grammar
+  rewriteFormal: More formal
+  rewriteCasual: More casual
+  rewriteReplace: Replace
+  rewriteDiscard: Discard
+  rewriteErrorNoApiKey: "Add an AI API key in Settings to rewrite text."
+  rewriteErrorFailed: Couldn't rewrite the selection. Try again.
+  rewriteErrorStale: The text changed. Select it again.
+  restoreSpoken: Restore what you said
+
+capture:
+  recordSteps: Record steps
+  moreStepsTitle: Capture more steps
+  moreStepsBody: New steps are inserted here. Choose the tab to record in.
+  newCaptureBody: Choose the tab to record in.
+  startCapture: Start capture
+  noRecordableTabs: No recordable tabs are open in this window.
+
+blocks:
+  add: Add block
+  heading: Heading
+  callout: Note
+  headingPlaceholder: Section title
+  calloutPlaceholder: Write a note
+  deleteHeading: "Delete this heading?"
+  deleteCallout: "Delete this note?"
+  variantInfo: Info
+  variantWarning: Warning
+  variantError: Error
+  variantSuccess: Success
+  variantCustom: Custom
+
+history:
+  title: "Version history"
+  current: Current
+  restore: Restore
+  unchangedVersions: "Unchanged versions ($1)"
+  readOnlyBanner: "You're viewing an earlier version. Close version history to go back."
+  loadError: Couldn't load version history. Try again.
+  restoreError: Couldn't restore. Try again in a moment.
+  storageFull: Not enough storage to save an undo point. Delete a guide and try again.
+  empty: "No earlier versions yet. Edit the guide to create one."
+  nameVersion: Name this version
+  namePlaceholder: Version name
+  allVersions: All versions
+  namedOnly: Named versions only
+  emptyNamed: "No named versions yet."
+  renameError: Couldn't save that name. Try again.
+  changeTitle: Title changed
+  changeStepAdded: "$1 step added"
+  changeStepsAdded: "$1 steps added"
+  changeStepRemoved: "$1 step deleted"
+  changeStepsRemoved: "$1 steps deleted"
+  changeStepEdited: "$1 step edited"
+  changeStepsEdited: "$1 steps edited"
+  changeStepReordered: Steps reordered
+  changeLink: "$1 link changed"
+  changeLinks: "$1 links changed"
+  changeImageReplaced: "$1 image replaced"
+  changeImagesReplaced: "$1 images replaced"
+  changeImageCropped: "$1 image cropped"
+  changeImagesCropped: "$1 images cropped"
+  changeImageAnnotated: "$1 image annotated"
+  changeImagesAnnotated: "$1 images annotated"
+  changeImageBlurred: "$1 image blurred"
+  changeImagesBlurred: "$1 images blurred"
+  changeAltText: Alt text edited
+
+emptyGuide:
+  title: This guide is empty
+  subtitle: "Record steps to fill it"
+
+blurPanel:
+  title: "Smart blur"
+  manualMode: "Manual mode"
+  selectElements: Select elements to blur
+  clickToBlur: "Click to blur"
+  done: Done
+  doneResume: "Done · Resume recording"
+  resetAll: "Reset all"
+
+screenshotView:
+  zoomIn: Zoom in
+  zoomOut: Zoom out
+  saved: Saved
+  editMenu: Edit screenshot
+  downloadEdited: "Edited image"
+  downloadOriginal: "Original image"
+  edit: "Edit"
+  addImage: Add image
+  replaceImage: Replace image
+  replaceHint: "Choose a new image for this step"
+  replaceDrop: "Click to browse or drop an image here"
+  replaceFormats: "PNG, JPG or WebP"
+  download: Download
+  deleteImage: Delete image
+  deleteConfirm: "Delete this screenshot? This can't be undone."
+  imageDeleted: Image deleted
+  altButton: ALT
+  altLabel: Alt text
+  altPlaceholder: Describe this image for screen readers
+
+annotationEditor:
+  title: Edit screenshot
+  toolBox: Box
+  toolArrow: Arrow
+  toolText: Text
+  toolSelect: "Select"
+  addTarget: "Add click target"
+  toolRedact: Redact
+  toolCrop: Crop
+  colorLabel: "Color"
+  textPlaceholder: Type something…
+  targetBorder: Border style
+  modeAnnotate: "Annotate"
+  toolLine: "Line"
+  duplicate: "Duplicate"
+  toolEllipse: "Ellipse"
+  lineColor: "Line color"
+  fillColor: "Fill color"
+  lineWidth: "Line width"
+  cornerRadius: "Corner radius"
+  font: "Font"
+  bold: "Bold"
+  italic: "Italic"
+  lineHeight: "Line height"
+  width_none: "No outline"
+  width_xs: "Extra small"
+  width_sm: "Small"
+  width_ms: "Medium small"
+  width_md: "Medium"
+  width_ml: "Medium large"
+  width_lg: "Large"
+  width_xl: "Extra large"
+  zoom: "Zoom"
+  cropHint: "Drag to crop, or drag a corner to resize"
+  resetCrop: "Reset crop"
+  arrowEnd: "Arrow end"
+  fontSize: "Font size"
+  undo: "Undo"
+  redo: "Redo"
+  end_none: "None"
+  end_bar: "Bar"
+  end_arrow: "Arrow"
+  end_arrow_solid: "Arrow solid"
+  end_circle: "Circle"
+  end_circle_solid: "Circle solid"
+  end_square: "Square"
+  end_square_solid: "Square solid"
+  done: Done
+
+exportPreview:
+  voiceover: "Voice-over"
+  voiceoverHint: "Read each step aloud. Steps are held until the voice finishes."
+  audio: "Audio"
+  audioSilent: "Silent"
+  audioNarrated: "Narrated"
+  voiceoverNoKey: "Add your own OpenAI key in Settings to add a voice-over."
+  videoLength: "Video length $1"
+  videoLengthVoice: "Video length $1 → $2 with voice-over"
+  voiceoverCost: "$1 clips · about $2 characters to synthesize"
+  voiceoverFailed: "Voice-over failed. Check the API key in Settings."
+  voiceoverNoAudioCodec: "The video is silent. This browser can't add audio to videos."
+  voiceoverNoKeySkip: "The video is silent. Add a voice-over API key in Settings."
+  voiceoverNothingToSay: "The video is silent. This guide has no text to read aloud."
+  narrating: "Narrating step $1 of $2"
+  preparingVoiceover: "Preparing the voice-over"
+  stepDescriptions: "Step captions"
+  stepDescriptionsHint: "Draw the step text onto each video frame"
+  stepNumbers: "Step numbers"
+  stepNumbersHint: "Start each step caption in the video and GIF with its number"
+  resolution: "Video quality"
+  gifQuality: "GIF quality"
+  gif_low: "Low"
+  gif_medium: "Medium"
+  gif_high: "High"
+  res_720p: "720p"
+  res_1080p: "1080p"
+  title: "Export preview"
+  cover: "Cover page"
+  coverHint: "A separate first sheet with the title and details"
+  screenshots: "Screenshots"
+  screenshotsHint: "Turn off for a compact text-only document"
+  stepUrls: "Step links"
+  stepUrlsHint: "Show the page address each step happened on"
+  imageScale: "Screenshot size"
+  scale_small: "Small"
+  scale_medium: "Medium"
+  scale_large: "Large"
+  download: "Export $1"
+  rendering: "Updating preview"
+  videoReady: "$1 steps · about $2 min of video"
+  videoReadyHint: "Long guides aren't encoded automatically. The preview covers every step."
+  videoGenerate: "Generate preview"
+  modeDocument: "Document"
+  modeVideo: "Video"
+  encodingVideo: "Encoding video preview"
+  videoFailed: "The video preview couldn't be created"
+  bundle: "FlowNote file"
+  demo: "Interactive demo"
+  bundleHint: "A .flownote file someone else can import and edit"
+  bundleStripInputs: "Remove typed text"
+  bundleStripInputsHint: "Removes it from step text and links. Screenshots still show what was on screen."
+  bundleUrls: "Link detail"
+  url_origin: "Site"
+  url_path: "Page"
+  url_full: "Full"
+  bundleRedactionNote: "Blurred areas are erased from the exported images."
+  bundleTypedWarning: "$1 screenshot shows text you typed. Blur it before sharing."
+  bundleTypedWarningPlural: "$1 screenshots show text you typed. Blur them before sharing."
+videoPlayer:
+  stepCount: "$1 steps"
+  previousStep: "Previous step"
+  nextStep: "Next step"
+  speed: "Playback speed"
+  mute: "Mute"
+  unmute: "Unmute"
+  spoken: "Narrated step"
+  play: "Play"
+  pause: "Pause"
+  fullscreen: "Fullscreen"
+  exitFullscreen: "Exit fullscreen"
+
+exportMenu:
+  docx: DOCX
+  html: HTML
+  markdown: Markdown
+  pdf: PDF
+  gif: GIF
+  video: Video
+  cancelProgress: "Cancel · $1%"
+  bundle: "FlowNote file"
+
+onboarding:
+  getStarted: Get started
+  blurTitle: "Smart blur"
+  openFlowNote: Open FlowNote
+  helloTitle: "Thanks for installing FlowNote!"
+  helloMessage: "Do a task once, the way you usually would, and FlowNote turns every click into a step with a screenshot. Let's set it up, it takes a minute."
+  loginWelcome: "Welcome back"
+  loginReady: "FlowNote is ready"
+  writeTitle: "How FlowNote writes your steps"
+  writeMessage: "Every click becomes a step with a screenshot. FlowNote writes the text two ways, and you get both."
+  writeKeyHint: "No AI on your account? Add your own OpenAI key in Settings, under API keys."
+  basicTitle: "Basic titles"
+  basicMessage: "Clear titles from what you clicked. Always works, nothing to set up."
+  basicBest: "Best to try FlowNote now"
+  basicExample: "Click \"Billing\""
+  aiChoiceTitle: "AI descriptions"
+  aiChoiceMessage: "Full sentences from your AI provider, with your own key. Unlocks voice narration too."
+  aiChoiceMessageNoVoice: "Full sentences written by AI. Used automatically when AI is available to your account."
+  aiBest: "Best for guides you share"
+  aiExample: "Open Billing to see your invoices and plan"
+  exampleMeta: "Step 2 · Billing"
+  keyPrivacy: "Your key stays on this device and only goes to the provider you pick."
+  voiceToggleTitle: "Voice narration"
+  voiceToggleHint: "Say what you're doing; FlowNote attaches it to the next step."
+  voiceNeedsKey: "Narration uses OpenAI or Groq for speech to text. Add a key for one of them."
+  makeTitle: "Make it yours"
+  makeMessage: "All optional. You can change any of it later in Settings."
+  brandTitle: "Your brand on exports"
+  brandHint: "Your logo and color on every PDF and HTML guide you export."
+  blurHint: "Blur sensitive details in screenshots before anything leaves your device."
+  readyTitle: "You're ready to capture"
+  readyStepOpen: "Open FlowNote"
+  readyStepStart: "Click Start capture"
+  readyStepClick: "Click through your task"
+  readyStepGuide: "Get a step-by-step guide"
+  pinHere: "Pin it here"
+  pinCardTitle: "Pin FlowNote for easy access"
+  pinCardMessage: "Click the puzzle icon next to the address bar and pin FlowNote to your toolbar."
+  pinMenuTitle: "Extensions"
+  trayTitle: "FlowNote lives in your tray"
+  trayMessage: "Start a capture from the FlowNote icon next to the clock, or press $1 from any app."
+  menuBarTitle: "FlowNote lives in your menu bar"
+  menuBarMessage: "Start a capture from the FlowNote icon at the top of your screen, or press $1 from any app."
+  demoApp: "FlowNote"
+  demoTitle: "Sign in to FlowNote"
+  demoField: "Email"
+  demoButton: "Sign in"
+  demoStepType: "Type \"anna@example.com\" in Email"
+  demoStepClick: "Click \"Sign in\""
+  demoPlusStep: "+1 step"
+  demoGuideMeta: "2 steps · just now"
+
+steps:
+  pressKey: 'Press $1 on "$2"'
+  toggleCheckbox: 'Toggle "$1"'
+  select: 'Select "$1"'
+  enter: 'Enter "$1"'
+  toggleSwitch: 'Toggle "$1"'
+  clickLink: 'Click link "$1"'
+  click: 'Click "$1"'
+  clickHere: "Click here"
+  rightClick: 'Right-click "$1"'
+  rightClickHere: "Right-click here"
+  typeIntoField: 'Type into $1 field "$2"'
+  typeInto: 'Type into "$1"'
+  type: 'Type "$1"'
+  typeSecret: "Type password"
+  copyFrom: 'Copy from "$1"'
+  pasteInto: 'Paste into "$1"'
+  cutFrom: 'Cut from "$1"'
+  drag: 'Drag "$1"'
+  typeValueInto: 'Type "$1" in $2'
+  clearField: "Clear $1"
+  textField: "text field"
+  navigate: Navigate to page
+  defaultAction: "$1 $2"
+
+export:
+  guideLabel: "GUIDE"
+  endLabel: "GUIDE COMPLETE"
+  stepsRange: "Steps $1–$2 of $3"
+  stepOf: "Step $1 of $2"
+  madeWith: "Made with FlowNote"
+  created: Created
+  source: Source
+  step: Step
+  steps: Steps
+  stepLabel: "Step $1"
+  stepsCount: "$1 steps"
+  createdLabel: "Created $1"
+  sourceLabel: "Source: $1"
+
+demo:
+  next: Next
+  back: Back
+  progress: "Progress"
+  hotspot: "Go to the next step"
+
+voice:
+  turnOn: Turn on voice narration
+  turnOff: Turn off voice narration
+  needsApiKey: "Narration needs an API key"
+  pausedWithCapture: Narration is paused with the capture
+  micStarting: Starting microphone…
+  micHearing: Hearing you
+  micQuiet: No sound
+  nextRecording: Voice narration is on and starts with your next recording.
+  orderHint: Say what you're about to do, then do it. Your words attach to the next action.
+  transcribing: Transcribing your narration…
+  transcribingHint: "Step descriptions update when it finishes."
+  narrated: "Narration added to $1 step."
+  narratedPlural: "Narration added to $1 steps."
+  narratedNone: "None of your narration matched a step."
+  guideSafe: "Your guide and screenshots are unaffected."
+  openSettings: Open settings
+  errorPermissionDenied: "Microphone access was blocked."
+  errorNoDevice: "No microphone found."
+  errorNoAudio: "The microphone picked up no sound."
+  errorMissingApiKey: "Narration needs a transcription API key."
+  errorStreamEnded: "The microphone cut out partway through."
+  errorNotRecording: "Narration wasn't running."
+  errorAlreadyRecording: "Narration was already running."
+  errorUnsupported: This browser can't record voice narration.
+  errorUnknown: "Narration stopped unexpectedly."
+
+micPermission:
+  title: Allow microphone access
+  checkingMessage: "Checking microphone access…"
+  promptingMessage: "Choose Allow in your browser's prompt. This tab closes on its own."
+  grantedTitle: Microphone ready
+  grantedMessage: "Taking you back."
+  deniedTitle: Microphone access is blocked
+  deniedMessage: "Click the icon left of the address bar, set Microphone to Allow, then try again."
+  retry: Try again
+  privacy: "Audio goes to your transcription provider. FlowNote never stores it."
+
+aiStatus:
+  rejected: "$1 rejected your API key."
+  noCredits: "Your $1 account has no credits."
+  rateLimited: "$1 is rate-limiting FlowNote's requests."
+  modelInvalid: "$1 doesn't offer that model to your account."
+  quota: "That request was too large for this model."
+  network: "FlowNote couldn't reach $1."
+  unknown: "$1 refused the request."
+  actionCheckKey: "Check your key in Settings."
+  actionAddCredits: "Add credits, then check the key again."
+  actionWait: "Wait a moment before recording more."
+  actionPickModel: "Choose another model in Settings."
+  actionConnection: "Check your connection."
+
+translate:
+  action: "Translate"
+  running: "Translating\u2026"
+  created: "Translated copy saved as \u201C$1\u201D"
+  noApiKey: "Add an AI key in Settings to translate a guide."
+  noContent: "This guide has nothing to translate yet."
+  failed: "FlowNote couldn't translate this guide."
+  saveFailed: "The translated copy couldn't be saved."
+
+stepSource:
+  ai: "AI"
+  voice: "Voice"
+  basic: "Basic"
+  edited: "Edited"
+  hint: "Where this description came from"
+
+import:
+  title: "Import guide"
+  dialogDescription: "Review a guide file before adding it to your library"
+  button: "Import"
+  dropHere: "Drop a .flownote file to import"
+  reading: "Reading the file"
+  confirm: "Add to library"
+  cancel: "Cancel"
+  guideMeHint: "Recorded on $1. Guide Me only replays on that site."
+  noteRedacted: "Blurred areas were removed by the author and can't be restored."
+  noteInputs: "Text typed into fields was left out."
+  noteUrls: "Links were shortened to the page address."
+  noteUrlsOrigin: "Links were shortened to the site address."
+  errorUnreadable: "This file couldn't be opened. It may be damaged or incomplete."
+  errorNotABundle: "This isn't a FlowNote file. Choose a file exported from FlowNote."
+  errorVersion: "This file was made with a newer FlowNote. Update FlowNote, then try again."
+  errorEmpty: "This file has no steps in it."
+  errorFailed: "The guide couldn't be saved to your library. Try importing it again."
+transcript:
+  title: Transcript
+  empty: Nothing was narrated in this recording.
+  loadError: Couldn't load the transcript. Try again.
+  filterAll: "All ($1)"
+  filterUnused: "Unused ($1)"
+  privacyNote: "Kept on this device only. Never included in exported guides, and deleted with the guide."
+  usedInStep: "Step $1"
+  readOnlyHint: Turn on Edit in the top bar to add these lines to a step.
+  notUsed: Unused
+  filteredOut: Filtered out
+  addToStep: "Add to step $1"
+  copyAll: Copy all
+  download: Download
+  delete: Delete transcript
+  confirmDelete: "Delete this transcript? This can't be undone."
+
+stepKind:
+  click: "Click"
+  type: "Type"
+  key: "Key"
+  navigate: "Page"
+  note: "Note"
+outline:
+  title: Contents
+  untitledStep: Untitled step
+  moreSelected: "+$1"
+  instructions: Press Space to pick up a step. Use the arrow keys to move it, Space to drop it, or Escape to cancel.
+  pickedUp: "Picked up $1"
+  movedOver: "$1 moved over $2"
+  droppedOver: "$1 dropped over $2"
+  dropped: "$1 dropped"
+  cancelled: "Moving $1 cancelled"
+  selected: Selected
+
+account:
+  signInTitle: "Sign in to FlowNote"
+  signInSubtitle: "Welcome back."
+  signUpTitle: "Create your FlowNote account"
+  signUpSubtitle: "Free while FlowNote is in early access."
+  createAccount: "Create account"
+  creatingAccount: "Creating account…"
+  noAccount: "New to FlowNote?"
+  haveAccount: "Already have an account?"
+  email: "Email"
+  password: "Password"
+  signIn: "Sign in"
+  signingIn: "Signing in…"
+  serverUnreachable: "Can't reach the FlowNote server. Check your connection and try again."
+  changeTitle: "Choose a new password"
+  changeSubtitle: "You were given a temporary password. Set your own to continue."
+  currentPassword: "Current password"
+  newPassword: "New password"
+  confirmPassword: "Confirm new password"
+  passwordMismatch: "The new passwords do not match."
+  updatePassword: "Update password"
+  signOut: "Sign out"
+  signedInAs: "Signed in as $1"
+  share: "Share"
+  shareLink: "Share link"
+  shareCreating: "Creating link…"
+  shareCopied: "Link copied to clipboard"
+  shareCopy: "Copy link"
+  shareHint: "Only signed-in FlowNote users can open this link."
+  shareFailed: "Couldn't create the link. $1"
+  aiOff: "FlowNote AI is turned off for your account. Add your own key in Settings to keep using AI features."
+  syncNotice: "Guides you record or save are backed up to your FlowNote account."
+  orgKeyNote: "FlowNote AI is included with your account, so you don't need a key. If you add your own key here, it is used first."
+
+meetings:
+  title: Meetings
+  record: Record a meeting
+  empty: No meetings yet. Record one and FlowNote will transcribe it, summarise it and pull out the follow-ups.
+  transcript: Transcript
+  noTranscript: Nothing was transcribed from this meeting.
+  screenTimeline: Screen
+  summary: Summary
+  takeaways: Key takeaways
+  decisions: Decisions
+  actionItems: Action items
+  yours: Yours
+  noInsights: No summary yet. Add an AI key in Settings to get one.
+  speakerYou: You
+  speakerOthers: Others
+  askTitle: Ask about this meeting
+  askPlaceholder: What was decided about the launch?
+  askSend: Ask
+  askFailed: That question could not be answered. Check your AI key in Settings.
+  transcribing: Transcribing and summarising…
+  failed: This meeting could not be processed.
+  notFound: That meeting no longer exists.
+  micOnly: Your microphone only
+  micOnlyShort: Microphone only
+  pickSource: Choose what to record
+  pickSourceHint: Pick the meeting window. FlowNote records that window and its audio, not your whole screen.
+  startRecording: Start recording
+  stopRecording: Stop recording
+  cancel: Cancel
+  recording: Recording the meeting
+  consentTitle: Tell the others they are being recorded
+  consentBody: Recording people without their knowledge is illegal in many places. Say on the call that you are recording before you start.
+  consentConfirm: I have told them
+  systemAudioUnsupported: On this platform FlowNote can only record your own microphone, not the other participants.
+  systemPickerHint: macOS will ask which window to share, and FlowNote records that window's audio with it.
