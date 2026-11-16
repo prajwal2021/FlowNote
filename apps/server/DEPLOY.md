@@ -6,7 +6,7 @@ holds every shared file and synced guide.
 
 ## Railway
 
-The repository root has `railway.json`, which builds `apps/server/Dockerfile`. The container runs
+`.railway/railway.ts` defines the service, which builds `apps/server/Dockerfile`. The container runs
 `db/schema.sql` on every start (it is safe to re-run) and then serves on `$PORT`.
 
 1. Create a project from the GitHub repository.
