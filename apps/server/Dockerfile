@@ -2,7 +2,7 @@ FROM node:22-slim AS build
 WORKDIR /repo
 RUN corepack enable
 COPY . .
-RUN pnpm install --frozen-lockfile --filter @flownote/server... --ignore-scripts
+RUN pnpm install --frozen-lockfile --filter @flownote/server... --filter @flownote/ui... --ignore-scripts
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm --filter @flownote/server build
 
