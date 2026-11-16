@@ -1,10 +1,11 @@
-import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
+import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'node:crypto';
 
 function key(): Buffer {
-  const raw = process.env.SECRETS_KEY;
-  const buffer = raw ? Buffer.from(raw, 'base64') : Buffer.alloc(0);
-  if (buffer.length !== 32) throw new Error('SECRETS_KEY must be 32 bytes, base64 encoded');
-  return buffer;
+  const raw = process.env.SECRETS_KEY ?? '';
+  const buffer = Buffer.from(raw, 'base64');
+  if (buffer.length === 32) return buffer;
+  if (raw.length >= 32) return createHash('sha256').update(raw).digest();
+  throw new Error('SECRETS_KEY must be 32 bytes base64 encoded, or a random string of at least 32 characters');
 }
 
 export function encryptSecret(plain: string): string {

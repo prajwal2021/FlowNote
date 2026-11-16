@@ -13,7 +13,7 @@ function client(): S3Client {
     globalForS3.flownoteS3 = new S3Client({
       endpoint,
       region: process.env.S3_REGION ?? 'garage',
-      forcePathStyle: true,
+      forcePathStyle: process.env.S3_FORCE_PATH_STYLE !== 'false',
       credentials: { accessKeyId, secretAccessKey },
       requestChecksumCalculation: 'WHEN_REQUIRED',
       responseChecksumValidation: 'WHEN_REQUIRED',
