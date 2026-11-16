@@ -581,6 +581,7 @@ exportPreview:
   videoFailed: "The video preview couldn't be created"
   bundle: "FlowNote file"
   demo: "Interactive demo"
+  demo: "Interactive demo"
   bundleHint: "A .flownote file someone else can import and edit"
   bundleStripInputs: "Remove typed text"
   bundleStripInputsHint: "Removes it from step text and links. Screenshots still show what was on screen."
@@ -613,6 +614,7 @@ exportMenu:
   video: Video
   cancelProgress: "Cancel · $1%"
   bundle: "FlowNote file"
+  demo: "Interactive demo"
 
 onboarding:
   getStarted: Get started

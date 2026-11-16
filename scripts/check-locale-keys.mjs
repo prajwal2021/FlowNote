@@ -41,3 +41,31 @@ if (tooLong.length > 0) {
   console.error(tooLong.join('\n'));
   process.exit(1);
 }
+
+const defined = new Set();
+let section = null;
+for (const line of readFileSync(join(LOCALES, 'en.yml'), 'utf8').split('\n')) {
+  const top = line.match(/^([A-Za-z][\w]*):\s*$/);
+  if (top) section = top[1];
+  const entry = line.match(/^ {2}([A-Za-z][\w]*):/);
+  if (section && entry) defined.add(`${section}.${entry[1]}`);
+}
+
+const missing = ROOTS.flatMap(walk).flatMap((file) =>
+  readFileSync(file, 'utf8')
+    .split('\n')
+    .flatMap((line, index) =>
+      [...line.matchAll(/\bi18n\.t\(([^)]*)\)/g)].flatMap((call) =>
+        [...call[1].matchAll(/['"`]([A-Za-z]\w*\.[A-Za-z]\w*)['"`]/g)]
+          .map((m) => m[1])
+          .filter((key) => !defined.has(key))
+          .map((key) => `${relative('.', file)}:${index + 1} ${key}`),
+      ),
+    ),
+);
+
+if (missing.length > 0) {
+  console.error(missing.join('\n'));
+  console.error(`\n${missing.length} translation key(s) are used but missing from packages/locales/en.yml`);
+  process.exit(1);
+}
