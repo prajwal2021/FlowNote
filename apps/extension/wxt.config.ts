@@ -38,6 +38,12 @@ export default defineConfig({
     plugins: [tailwindcss()],
   }),
   hooks: {
+    'zip:start': () => {
+      const server = process.env.WXT_FLOWNOTE_SERVER ?? '';
+      if (!server.startsWith('https://')) {
+        throw new Error('Set WXT_FLOWNOTE_SERVER to the https address of the FlowNote server before zipping a store build.');
+      }
+    },
     'build:manifestGenerated': (wxt, manifest) => {
       if (wxt.config.browser === 'firefox' && manifest.sidebar_action) {
         (manifest.sidebar_action as Record<string, unknown>).open_at_install = false;
@@ -58,6 +64,7 @@ export default defineConfig({
         "scripting",
         "unlimitedStorage",
         "webNavigation",
+        "identity",
         ...(isFirefox ? [] : ["sidePanel", "offscreen"]),
       ],
       ...(isFirefox

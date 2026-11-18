@@ -22,6 +22,7 @@ import { GuideMeView } from './GuideMeView';
 import { LibraryView } from './LibraryView';
 import { openDashboard } from './lib/open-dashboard';
 import { RecordingView } from './RecordingView';
+import { UpgradeNotice } from './UpgradeNotice';
 
 type View =
   | { name: 'library' }
@@ -258,6 +259,7 @@ export function App() {
               {i18n.t('sidepanel.notRecordable')}
             </p>
           )}
+          <UpgradeNotice />
           <Button
             variant="outline"
             onClick={() => void openDashboard()}

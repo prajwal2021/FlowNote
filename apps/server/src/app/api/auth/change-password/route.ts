@@ -12,8 +12,9 @@ export async function POST(request: Request) {
   if (!body || typeof body.currentPassword !== 'string') return fail(400, 'Current password is required.');
   const problem = validatePassword(body.newPassword);
   if (problem) return fail(400, problem);
-  const row = await queryOne<{ password_hash: string }>('select password_hash from users where id = $1', [auth.user.id]);
-  if (!row || !(await bcrypt.compare(body.currentPassword, row.password_hash))) return fail(403, 'Current password is incorrect.');
+  const row = await queryOne<{ password_hash: string | null }>('select password_hash from users where id = $1', [auth.user.id]);
+  if (!row?.password_hash) return fail(400, 'This account signs in with Google. Use "Forgot password" to add a password.');
+  if (!(await bcrypt.compare(body.currentPassword, row.password_hash))) return fail(403, 'Current password is incorrect.');
   if (body.currentPassword === body.newPassword) return fail(400, 'Choose a different password.');
   await query('update users set password_hash = $2, must_change_password = false where id = $1', [
     auth.user.id,

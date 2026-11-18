@@ -22,6 +22,7 @@ import {
 } from '@/core/guides/service';
 import type { Step } from '@/core/guides/types';
 import { readAuth } from '@/lib/auth/read-auth';
+import { claimRecording } from '@/lib/billing/claim-recording';
 import { getActiveTab } from '@/lib/browser-api/get-active-tab';
 import { localStorage } from '@/lib/browser-api/local-storage';
 import { openSidebar } from '@/lib/browser-api/open-sidebar';
@@ -77,6 +78,10 @@ async function startNarrationIfPossible(): Promise<boolean> {
 
 async function startRecording(data: { url: string; insertTargetGuideId?: string; insertAtIndex?: number }) {
   if (!(await readAuth())) throw new Error('Sign in to FlowNote to record.');
+  if (data.insertTargetGuideId === undefined && !(await claimRecording())) {
+    openSidebar();
+    throw new Error('Free recording limit reached.');
+  }
   await waitUntilReady();
   const actor = getActor();
   actor.send({
@@ -186,7 +191,7 @@ export default defineBackground(() => {
       if (!(await permitted)) return;
       const tab = await getActiveTab();
       const url = tab?.url || tab?.pendingUrl || '';
-      if (isRecordableUrl(url) && (await readAuth())) await startRecording({ url });
+      if (isRecordableUrl(url) && (await readAuth())) await startRecording({ url }).catch((err) => logger.error(err));
     },
     pause: async () => {
       await waitUntilReady();

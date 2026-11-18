@@ -7,7 +7,7 @@ import { currentUser } from '@/lib/auth';
 export default async function SignUpPage() {
   if (await currentUser()) redirect('/');
   return (
-    <AuthShell title="Create your FlowNote account" subtitle="Free while FlowNote is in early access." mode="signup">
+    <AuthShell title="Create your FlowNote account" subtitle="Start free. No card needed." mode="signup">
       <Suspense>
         <LoginForm mode="signup" />
       </Suspense>

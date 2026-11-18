@@ -838,7 +838,7 @@ account:
   signInTitle: "Sign in to FlowNote"
   signInSubtitle: "Welcome back."
   signUpTitle: "Create your FlowNote account"
-  signUpSubtitle: "Free while FlowNote is in early access."
+  signUpSubtitle: "Start free. No card needed."
   createAccount: "Create account"
   creatingAccount: "Creating account…"
   noAccount: "New to FlowNote?"
@@ -866,7 +866,24 @@ account:
   shareFailed: "Couldn't create the link. $1"
   aiOff: "FlowNote AI is turned off for your account. Add your own key in Settings to keep using AI features."
   syncNotice: "Guides you record or save are backed up to your FlowNote account."
+  continueWithGoogle: "Continue with Google"
+  googleFailed: "Google sign-in didn't finish. Try again."
+  or: "or"
+  forgotPassword: "Forgot password?"
+  agreePrefix: "By continuing you agree to the"
+  terms: "Terms"
+  privacy: "Privacy Policy"
   orgKeyNote: "FlowNote AI is included with your account, so you don't need a key. If you add your own key here, it is used first."
+
+billing:
+  planPro: "FlowNote Pro: unlimited recordings"
+  planFree: "Free plan"
+  planFreeUsage: "Free plan: $1 of $2 recordings used"
+  upgrade: "Upgrade to Pro"
+  manage: "Manage billing"
+  account: "Account"
+  limitTitle: "You've used your free recordings"
+  limitBody: "The free plan includes $1 recordings. Upgrade to FlowNote Pro for unlimited recordings. Your existing guides stay available."
 
 meetings:
   title: Meetings

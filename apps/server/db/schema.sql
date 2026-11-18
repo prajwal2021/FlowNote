@@ -99,3 +99,33 @@ alter table guides add column if not exists team_id uuid references teams(id) on
 create index if not exists guides_team_idx on guides(team_id);
 
 alter table users alter column can_use_ai set default true;
+
+alter table users alter column password_hash drop not null;
+alter table users add column if not exists google_sub text unique;
+alter table users add column if not exists email_verified boolean not null default false;
+alter table users add column if not exists recordings_used integer not null default 0;
+alter table users add column if not exists stripe_customer_id text unique;
+alter table users add column if not exists subscription_id text;
+alter table users add column if not exists subscription_status text;
+alter table users add column if not exists current_period_end timestamptz;
+
+create table if not exists password_resets (
+  token_hash text primary key,
+  user_id uuid not null references users(id) on delete cascade,
+  created_at timestamptz not null default now(),
+  expires_at timestamptz not null,
+  used_at timestamptz
+);
+create index if not exists password_resets_user_idx on password_resets(user_id);
+
+create table if not exists oauth_states (
+  state text primary key,
+  client text not null check (client in ('web', 'api')),
+  redirect text not null,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists stripe_events (
+  id text primary key,
+  received_at timestamptz not null default now()
+);

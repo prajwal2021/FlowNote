@@ -22,8 +22,10 @@ interface UserRow {
   role: Role;
   status: 'active' | 'frozen';
   can_use_ai: boolean;
-  password_hash: string;
+  password_hash: string | null;
   must_change_password: boolean;
+  failed_attempts: number;
+  locked_until: Date | null;
 }
 
 const DUMMY_HASH = bcrypt.hashSync('flownote-timing-pad', 12);
@@ -39,7 +41,7 @@ function toSessionUser(row: Pick<UserRow, 'id' | 'email' | 'name' | 'role' | 'ca
   };
 }
 
-function hashToken(token: string): string {
+export function hashToken(token: string): string {
   return createHash('sha256').update(token).digest('hex');
 }
 
@@ -61,7 +63,10 @@ export function generatePassword(): string {
 
 export type LoginResult =
   | { ok: true; user: SessionUser; token: string; kind: 'web' | 'api' }
-  | { ok: false; reason: 'invalid' | 'frozen' };
+  | { ok: false; reason: 'invalid' | 'frozen' | 'locked' };
+
+const MAX_FAILED_ATTEMPTS = 10;
+const LOCK_MINUTES = 15;
 
 export async function login(emailInput: string, password: string, kind: 'web' | 'api'): Promise<LoginResult> {
   const email = emailInput.trim().toLowerCase();
@@ -71,8 +76,19 @@ export async function login(emailInput: string, password: string, kind: 'web' | 
     await bcrypt.compare(password, DUMMY_HASH);
     return { ok: false, reason: 'invalid' };
   }
-  const match = await bcrypt.compare(password, user.password_hash);
-  if (!match) {
+  if (user.locked_until && user.locked_until.getTime() > Date.now()) {
+    await bcrypt.compare(password, DUMMY_HASH);
+    await audit(user.id, 'auth.login-blocked-locked', user.email);
+    return { ok: false, reason: 'locked' };
+  }
+  const match = await bcrypt.compare(password, user.password_hash ?? DUMMY_HASH);
+  if (!match || !user.password_hash) {
+    await query(
+      `update users set failed_attempts = failed_attempts + 1,
+         locked_until = case when failed_attempts + 1 >= $2 then now() + make_interval(mins => $3) else locked_until end
+       where id = $1`,
+      [user.id, MAX_FAILED_ATTEMPTS, LOCK_MINUTES],
+    );
     await audit(user.id, 'auth.login-failed', user.email);
     return { ok: false, reason: 'invalid' };
   }
@@ -80,7 +96,7 @@ export async function login(emailInput: string, password: string, kind: 'web' | 
     await audit(user.id, 'auth.login-blocked-frozen', user.email);
     return { ok: false, reason: 'frozen' };
   }
-  await query('update users set last_login_at = now() where id = $1', [user.id]);
+  await query('update users set last_login_at = now(), failed_attempts = 0, locked_until = null where id = $1', [user.id]);
   await audit(user.id, 'auth.login', user.email, { client: kind });
   return { ok: true, user: toSessionUser(user), token: await createSession(user.id, kind), kind };
 }
@@ -165,4 +181,46 @@ export async function audit(actorId: string | null, action: string, target: stri
     target,
     detail ? JSON.stringify(detail) : null,
   ]);
+}
+
+export interface GoogleProfile {
+  sub: string;
+  email: string;
+  name: string;
+}
+
+export async function signInWithGoogle(profile: GoogleProfile, kind: 'web' | 'api', ip: string): Promise<LoginResult> {
+  const email = profile.email.trim().toLowerCase();
+  let user = await queryOne<UserRow>('select * from users where google_sub = $1', [profile.sub]);
+  if (!user) {
+    const existing = await queryOne<{ id: string; email_verified: boolean }>(
+      'select id, email_verified from users where email = $1 and google_sub is null',
+      [email],
+    );
+    if (existing && !existing.email_verified) await destroyUserSessions(existing.id);
+    user = await queryOne<UserRow>(
+      `update users set google_sub = $2, email_verified = true,
+         password_hash = case when email_verified then password_hash else null end,
+         name = case when name = '' then $3 else name end
+       where email = $1 and google_sub is null returning *`,
+      [email, profile.sub, profile.name.slice(0, 120)],
+    );
+    if (user) await audit(user.id, 'auth.google-linked', user.email);
+  }
+  if (!user) {
+    user = await queryOne<UserRow>(
+      `insert into users (email, name, google_sub, email_verified, can_use_ai) values ($1, $2, $3, true, true)
+       on conflict (email) do nothing returning *`,
+      [email, profile.name.slice(0, 120), profile.sub],
+    );
+    if (!user) return { ok: false, reason: 'invalid' };
+    await audit(user.id, 'auth.signup', user.email, { client: kind, ip, provider: 'google' });
+  }
+  if (user.status === 'frozen') {
+    await audit(user.id, 'auth.login-blocked-frozen', user.email);
+    return { ok: false, reason: 'frozen' };
+  }
+  await query('update users set last_login_at = now(), failed_attempts = 0, locked_until = null where id = $1', [user.id]);
+  await audit(user.id, 'auth.login', user.email, { client: kind, provider: 'google' });
+  return { ok: true, user: toSessionUser(user), token: await createSession(user.id, kind), kind };
 }

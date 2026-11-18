@@ -1,7 +1,7 @@
 import { audit, destroyUserSessions } from '@/lib/auth';
 import { query, queryOne } from '@/lib/db';
 import { fail, json, requireAdmin } from '@/lib/http';
-import { deleteObject, guideKey, shareKey } from '@/lib/storage';
+import { deleteUser } from '@/lib/delete-user';
 
 export { OPTIONS } from '@/lib/cors';
 
@@ -61,13 +61,7 @@ export async function DELETE(_request: Request, { params }: Ctx) {
   const target = await queryOne<{ role: string }>('select role from users where id = $1', [id]);
   if (!target) return fail(404, 'User not found.');
   if (target.role === 'admin' && (await lastActiveAdmin(id))) return fail(400, 'At least one active admin is required.');
-  const shares = await query<{ id: string }>('select id from shares where owner_id = $1', [id]);
-  const guides = await query<{ id: string }>('select id from guides where owner_id = $1', [id]);
-  await query('delete from users where id = $1', [id]);
-  await Promise.all([
-    ...shares.map((row) => deleteObject(shareKey(row.id))),
-    ...guides.flatMap((row) => [deleteObject(guideKey(row.id, 'html')), deleteObject(guideKey(row.id, 'bundle')), deleteObject(guideKey(row.id, 'snapshot'))]),
-  ]);
+  await deleteUser(id);
   await audit(auth.user.id, 'user.delete', id);
   return json({ ok: true });
 }

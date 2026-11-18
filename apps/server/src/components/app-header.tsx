@@ -1,6 +1,6 @@
 'use client';
 
-import { Activity, Files, LogOut, ShieldCheck, Users } from 'lucide-react';
+import { Activity, Files, LogOut, ShieldCheck, UserRound, Users } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { BrandBadge } from './brand-badge';
@@ -53,6 +53,9 @@ export function AppHeader({ name, email, admin }: { name: string; email: string;
             <div className="text-[11px] text-muted-foreground">{email}</div>
           </div>
           {admin && <Badge tone="red">Admin</Badge>}
+          <Link href="/account" aria-label="Account" title="Account" className="rounded-lg p-2 text-muted-foreground hover:bg-secondary hover:text-foreground">
+            <UserRound size={16} />
+          </Link>
           <button onClick={signOut} aria-label="Sign out" title="Sign out" className="rounded-lg p-2 text-muted-foreground hover:bg-secondary hover:text-foreground">
             <LogOut size={16} />
           </button>

@@ -1,7 +1,8 @@
-import { cookies } from 'next/headers';
 import { clientIp, signUp } from '@/lib/auth';
 import { fail, json } from '@/lib/http';
-import { API_SESSION_DAYS, SESSION_COOKIE, WEB_SESSION_DAYS } from '@/lib/session-config';
+import { sendWelcome } from '@/lib/mail';
+import { API_SESSION_DAYS } from '@/lib/session-config';
+import { setSessionCookie } from '@/lib/session-cookie';
 
 export { OPTIONS } from '@/lib/cors';
 
@@ -11,14 +12,9 @@ export async function POST(request: Request) {
   const kind = body.client === 'extension' || body.client === 'desktop' ? 'api' : 'web';
   const result = await signUp(body.email, body.password, kind, await clientIp());
   if (!result.ok) return fail(result.status, result.error);
+  void sendWelcome(result.user.email).catch((error) => console.error('welcome mail failed', error));
   if (kind === 'web') {
-    (await cookies()).set(SESSION_COOKIE, result.token, {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.COOKIE_SECURE === 'true',
-      path: process.env.NEXT_PUBLIC_BASE_PATH || '/',
-      maxAge: WEB_SESSION_DAYS * 86_400,
-    });
+    await setSessionCookie(result.token);
     return json({ user: result.user }, 201);
   }
   return json({ user: result.user, token: result.token, expiresInDays: API_SESSION_DAYS }, 201);
